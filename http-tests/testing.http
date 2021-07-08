@@ -1,0 +1,93 @@
+// Add a Company
+POST http://localhost:3000/companies
+accept: text/plain
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "Cool Company {{$randomInt}}"
+}
+
+> {%
+ client.global.set("companyId", response.body.entityId)
+ client.global.set("correlationId", response.body.correlationId)
+ %}
+
+###
+
+// Get a company
+GET http://localhost:3000/companies/{{companyId}}
+accept: text/plain
+#Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+
+###
+
+
+// Add a User
+POST http://localhost:3000/{{companyId}}/users
+accept: text/plain
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "firstName": "Aaron",
+  "lastName": "Thomas",
+  "email": "aaron@pop42.com",
+  "mobilePhone": "+14802807277"
+}
+
+> {%
+ client.global.set("userId", response.body.entityId)
+ client.global.set("correlationId", response.body.correlationId)
+ %}
+
+###
+
+
+// Get a user
+GET http://localhost:3000/{{companyId}}/users/{{userId}}
+accept: text/plain
+#Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+
+###
+
+// Search for users
+GET http://localhost:3000/{{companyId}}/users?search=aaron&offset=0&limit=2
+accept: text/plain
+#Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+
+###
+
+#// Add a user
+#POST http://localhost:3000/{{companyId}}/users
+#accept: text/plain
+#Authorization: Bearer {{auth_token}}
+#Content-Type: application/json
+#
+#{
+#  "firstName": "Aaron",
+#  "lastName": "Thomas",
+#  "mobilePhone": "5555555555",
+#  "email": "aaron@pop42.com"
+#}
+#
+#> {%
+# client.global.set("userId", response.body.entityId)
+# client.global.set("correlationId", response.body.correlationId)
+# %}
+#
+#
+####
+#
+#// GET a user
+#GET http://localhost:3000/{{companyId}}/users/{{userId}}
+#accept: text/plain
+#Authorization: Bearer {{auth_token}}
+#Content-Type: application/json
+#

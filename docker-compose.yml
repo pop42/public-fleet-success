@@ -1,0 +1,77 @@
+services:
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.13.2
+    container_name: elasticsearch
+    environment:
+      - xpack.security.enabled=false
+      - discovery.type=single-node
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+      nofile:
+        soft: 65536
+        hard: 65536
+    cap_add:
+      - IPC_LOCK
+    volumes:
+      - elasticsearch-data:/usr/share/elasticsearch/data
+    ports:
+      - 9200:9200
+      - 9300:9300
+    networks:
+      shared:
+        aliases:
+          - elastic
+
+  kibana:
+    container_name: kibana
+    image: docker.elastic.co/kibana/kibana:7.13.2
+    environment:
+      - ELASTICSEARCH_HOSTS="http://elastic:9200"
+    ports:
+      - 5601:5601
+    networks:
+      shared:
+        aliases:
+          - kibana
+    depends_on:
+      - elasticsearch
+
+  eventstore:
+    container_name: eventstore
+    image: eventstore/eventstore:20.10.2-buster-slim
+    environment:
+      - EVENTSTORE_CLUSTER_SIZE=1
+      - EVENTSTORE_RUN_PROJECTIONS=All
+      - EVENTSTORE_START_STANDARD_PROJECTIONS=true
+      - EVENTSTORE_EXT_TCP_PORT=1113
+      - EVENTSTORE_EXT_HTTP_PORT=2113
+      - EVENTSTORE_INSECURE=true
+      - EVENTSTORE_ENABLE_EXTERNAL_TCP=true
+      - EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP=true
+    ports:
+      - "1113:1113"
+      - "2113:2113"
+    volumes:
+      - type: volume
+        source: eventstore-volume-data
+        target: /var/lib/eventstore
+      - type: volume
+        source: eventstore-volume-logs
+        target: /var/log/eventstore
+    networks:
+      shared:
+        aliases:
+          - eventstore
+
+volumes:
+  eventstore-volume-data:
+  eventstore-volume-logs:
+  elasticsearch-data:
+    driver: local
+  database-data: # named volumes can be managed easier using docker-compose
+
+networks:
+  shared:
+    driver: bridge
