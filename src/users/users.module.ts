@@ -3,7 +3,7 @@ import { UsersController } from './api/users.controller'
 import { UsersApiService } from './api/users-api.service'
 import { ElasticModule } from '../common/elastic/elastic.module'
 import { CompaniesModule } from '../companies/companies.module'
-import { UsersAggregatorsService } from './subscribers/users-aggregators.service'
+import { UsersAggregatorService } from './subscribers/users-aggregator.service'
 import { UsersComponentService } from './subscribers/users-component.service'
 import { UserProjectionService } from './projections'
 
@@ -12,7 +12,7 @@ import { UserProjectionService } from './projections'
   controllers: [UsersController],
   providers: [
     UsersApiService,
-    UsersAggregatorsService,
+    UsersAggregatorService,
     UsersComponentService,
     UserProjectionService,
   ],

@@ -8,7 +8,7 @@ import { UserAddedEventData } from '../events'
 import { User } from '../entities'
 
 @Injectable()
-export class UsersAggregatorsService implements OnApplicationBootstrap {
+export class UsersAggregatorService implements OnApplicationBootstrap {
   constructor(
     private eventstore: EventstoreService,
     private elasticClient: ElasticClientService,

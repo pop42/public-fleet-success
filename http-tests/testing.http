@@ -64,30 +64,30 @@ Content-Type: application/json
 
 ###
 
-#// Add a user
-#POST http://localhost:3000/{{companyId}}/users
-#accept: text/plain
+// Add a Vehicle
+POST http://localhost:3000/{{companyId}}/vehicles
+accept: text/plain
+Authorization: Bearer {{auth_token}}
+Content-Type: application/json
+
+{
+  "name": "vehicle #{{$randomInt}}",
+  "facilityId": "{{$randomInt}}",
+  "vin": "2HGFA1F35BH511718{{$randomInt}}"
+}
+
+> {%
+ client.global.set("vehicleId", response.body.entityId)
+ client.global.set("correlationId", response.body.correlationId)
+ %}
+
+###
+
+// Search for vehicles
+GET http://localhost:3000/{{companyId}}/vehicles?search=&offset=0&limit=2
+accept: text/plain
 #Authorization: Bearer {{auth_token}}
-#Content-Type: application/json
-#
-#{
-#  "firstName": "Aaron",
-#  "lastName": "Thomas",
-#  "mobilePhone": "5555555555",
-#  "email": "aaron@pop42.com"
-#}
-#
-#> {%
-# client.global.set("userId", response.body.entityId)
-# client.global.set("correlationId", response.body.correlationId)
-# %}
-#
-#
-####
-#
-#// GET a user
-#GET http://localhost:3000/{{companyId}}/users/{{userId}}
-#accept: text/plain
-#Authorization: Bearer {{auth_token}}
-#Content-Type: application/json
-#
+Content-Type: application/json
+
+
+###

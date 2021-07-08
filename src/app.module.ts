@@ -8,6 +8,7 @@ import configuration from './config'
 
 import { UsersModule } from './users/users.module'
 import { EVENTSTORE_CONNECTION_STRING } from './constants'
+import { VehiclesModule } from './vehicles/vehicles.module';
 
 @Module({
   imports: [
@@ -24,6 +25,7 @@ import { EVENTSTORE_CONNECTION_STRING } from './constants'
     CompaniesModule,
     ElasticModule,
     UsersModule,
+    VehiclesModule,
   ],
   controllers: [],
   providers: [],
