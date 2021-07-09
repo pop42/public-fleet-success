@@ -73,7 +73,7 @@ Content-Type: application/json
 {
   "name": "vehicle #{{$randomInt}}",
   "facilityId": "{{$randomInt}}",
-  "vin": "2HGFA1F35BH511718{{$randomInt}}"
+  "vin": "1N6AD0EV9AC407728"
 }
 
 > {%

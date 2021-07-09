@@ -6,7 +6,7 @@ import { ElasticClientService } from '../../common/elastic/elastic-client/elasti
 import { AddUser } from '../events'
 import { userConstants } from '../constants'
 import { ApiEntityResponseDto } from '../../common/dto/api-entity-response.dto'
-import { CompanyProjectionService } from '../../companies/projections/company-projection.service'
+import { CompanyProjectionService } from '../../companies/services/company-projection.service'
 import { User } from '../entities'
 
 @Injectable()

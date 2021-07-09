@@ -11,6 +11,10 @@ export class RawEvent<T> {
     return this.resolvedEvent.event!
   }
 
+  get metadata() {
+    return this['metadata'] || {}
+  }
+
   get data() {
     return this.event.data as T
   }

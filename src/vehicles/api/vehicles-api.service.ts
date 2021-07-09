@@ -1,13 +1,13 @@
 import { HttpException, HttpStatus, Injectable } from '@nestjs/common'
 import { EventstoreService } from '../../common/eventstore/eventstore.service'
 import { ElasticClientService } from '../../common/elastic/elastic-client/elastic-client.service'
-import { CompanyProjectionService } from '../../companies/projections'
 import { AddVehicleDto } from './dto/add-vehicle.dto'
 import { Utils } from '../../common/utils'
 import { vehicleConstants } from '../constants'
 import { Vehicle } from '../entities'
 import { AddVehicle } from '../events'
 import { ApiEntityResponseDto } from '../../common/dto/api-entity-response.dto'
+import { CompanyProjectionService } from '../../companies/services/company-projection.service'
 
 @Injectable()
 export class VehiclesApiService {

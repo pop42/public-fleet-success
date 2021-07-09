@@ -3,7 +3,7 @@ import { EventstoreService } from '../../common/eventstore/eventstore.service'
 import { StoreEvent } from '../../common/eventstore/store-event'
 import { userConstants } from '../constants'
 import { AddUserCmdData, UserAdded } from '../events'
-import { UserProjectionService } from '../projections/user-projection.service'
+import { UserProjectionService } from './user-projection.service'
 
 @Injectable()
 export class UsersComponentService implements OnApplicationBootstrap {

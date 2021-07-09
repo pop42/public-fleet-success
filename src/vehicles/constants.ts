@@ -20,8 +20,13 @@ export const vehicleConstants = {
   eventTypes: {
     addVehicle: 'AddVehicle',
     vehicleAdded: 'VehicleAdded',
+    vinDecoded: 'VinDecoded',
+    decodeVin: 'DecodeVin',
+    decodeVinFailed: 'DecodeVinFailed',
   },
   indexes: {
     vehicles: 'vehicles',
   },
+  vinDecodeUrl: (vin: string) =>
+    `https://vpic.nhtsa.dot.gov/api/vehicles/decodevinvaluesextended/${vin}?format=json`,
 }

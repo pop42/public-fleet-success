@@ -1,7 +1,7 @@
 import { Injectable, OnApplicationBootstrap } from '@nestjs/common'
 import { EventstoreService } from '../../common/eventstore/eventstore.service'
 import { StoreEvent } from '../../common/eventstore/store-event'
-import { CompanyProjectionService } from '../projections/company-projection.service'
+import { CompanyProjectionService } from './company-projection.service'
 
 import { AddCompanyCmdData, CompanyAdded } from '../events'
 import { companyConstants } from '../constants'

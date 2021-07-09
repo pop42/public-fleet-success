@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common'
-import { CompaniesComponentsService } from './subscribers/companies-components.service'
-
-import { CompaniesAggregatorsService } from './subscribers/companies-aggregators.service'
+import { CompaniesComponentsService } from './services/companies-components.service'
+import { CompaniesAggregatorsService } from './services/companies-aggregators.service'
 import { ElasticModule } from '../common/elastic/elastic.module'
 import { CompaniesController } from './api/companies.controller'
 import { CompaniesApiService } from './api/companies-api.service'
-import { CompanyProjectionService } from './projections'
+import { CompanyProjectionService } from './services/company-projection.service'
 
 @Module({
   imports: [ElasticModule, CompanyProjectionService],

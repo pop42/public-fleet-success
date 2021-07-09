@@ -3,9 +3,10 @@ import { ElasticModule } from '../common/elastic/elastic.module'
 import { CompaniesModule } from '../companies/companies.module'
 import { VehiclesController } from './api/vehiclesController'
 import { VehiclesApiService } from './api/vehicles-api.service'
-import { VehicleProjectionService } from './projections'
-import { VehiclesAggregatorService } from './subscribers/vehicles-aggregator.service'
-import { VehiclesComponentService } from './subscribers/vehicles-component.service'
+import { VehiclesAggregatorService } from './services/vehicles-aggregator.service'
+import { VehiclesComponentService } from './services/vehicles-component.service'
+import { VinDecodingService } from './services/vin-decoding.service'
+import { VehicleProjectionService } from './services/vehicle-projection.service'
 
 @Module({
   imports: [ElasticModule, CompaniesModule, VehicleProjectionService],
@@ -15,6 +16,7 @@ import { VehiclesComponentService } from './subscribers/vehicles-component.servi
     VehiclesAggregatorService,
     VehiclesComponentService,
     VehicleProjectionService,
+    VinDecodingService,
   ],
   exports: [VehicleProjectionService],
 })
