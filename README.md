@@ -1,3 +1,4 @@
+##### Development
 1. Clone it.
 1. run `npm install`
 1. run `npm run dc:up` in a separate terminal for databases
@@ -9,6 +10,11 @@ APIs run at http://localhost:3000
 Eventstore runs at http://localhost:2113
 
 Kibana (elasticsearch) runs at https://localhost:5601
+
+
+##### Tips
+
+When using webstorm, go into preferences, turn disable eslint.   Enable prettier on save and code reformat.
 
 ### Current Features
 
