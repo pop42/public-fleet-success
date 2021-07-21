@@ -18,6 +18,7 @@ export class CompaniesController {
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
+    console.log({ asldjfcaaalfajsldfjasjf: id })
     return this.companiesApiService.findCompany(id)
   }
 }
